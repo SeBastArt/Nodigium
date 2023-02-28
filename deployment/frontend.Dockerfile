@@ -9,7 +9,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine-arm64v8 AS build
 WORKDIR /src
 COPY ["src/Service.Frontend/Service.Frontend.csproj", "Service.Frontend/"]
 RUN dotnet restore "Service.Frontend/Service.Frontend.csproj"
-COPY src .
+COPY . .
 WORKDIR "/src/Service.Frontend"
 RUN dotnet build "Service.Frontend.csproj" -c Release -o /app/build
 
