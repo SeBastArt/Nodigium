@@ -7,9 +7,9 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine-arm64v8 AS build
 WORKDIR /src
-COPY ["Service.Frontend/Service.Frontend.csproj", "Service.Frontend/"]
+COPY ["src/Service.Frontend/Service.Frontend.csproj", "Service.Frontend/"]
 RUN dotnet restore "Service.Frontend/Service.Frontend.csproj"
-COPY . .
+COPY src .
 WORKDIR "/src/Service.Frontend"
 RUN dotnet build "Service.Frontend.csproj" -c Release -o /app/build
 
