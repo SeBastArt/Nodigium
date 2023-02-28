@@ -6,8 +6,14 @@ EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine-arm64v8 AS build
+
+#Copy everthing in src directory
+COPY . ./
+# Restore packages
+RUN dotnet restore ./Service.Frontend/Service.Frontend.csproj --disable-parallel
+
 WORKDIR /src
-COPY ["src/Service.Frontend/Service.Frontend.csproj", "Service.Frontend/"]
+COPY ["Service.Frontend/Service.Frontend.csproj", "Service.Frontend/"]
 RUN dotnet restore "Service.Frontend/Service.Frontend.csproj"
 COPY . .
 WORKDIR "/src/Service.Frontend"

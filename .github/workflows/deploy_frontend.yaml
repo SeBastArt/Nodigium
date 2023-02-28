@@ -46,10 +46,10 @@ jobs:
       -
         name: Build docker image
         if: success()
-        working-directory: .
+        working-directory: src
         run: |
           docker buildx build . \
             --platform ${{ steps.prepare.outputs.docker_platform }} \
-            --file deployment/frontend.Dockerfile \
+            --file ../deployment/frontend.Dockerfile \
             --tag ${{ steps.prepare.outputs.docker_image }}:${{ steps.prepare.outputs.version }} \
             --output type=image,push=true
