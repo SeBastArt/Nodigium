@@ -1,4 +1,4 @@
-name: build_and_deploy_arm64
+name: deploy_frontend
 
 on:
   # Allow to run the workflow manually from Actions tab
