@@ -1,0 +1,51 @@
+version: '3.4'
+
+volumes:
+  mysql_data:
+      driver: local
+
+services:
+  service.users:
+    image: ${DOCKER_REGISTRY-}serviceusers
+    build:
+      context: .
+      dockerfile: src/Service.Users/Dockerfile
+  mariadb:
+      image: mariadb
+      volumes:
+        - mysql_data:/var/lib/mysql
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: keycloak
+        MYSQL_USER: keycloak
+        MYSQL_PASSWORD: password
+      # Copy-pasted from https://github.com/docker-library/mariadb/issues/94
+      healthcheck:
+        test: ["CMD", "mysqladmin", "ping", "--silent"]
+  keycloak:
+      image: quay.io/keycloak/keycloak:legacy
+      volumes:
+        - type: bind
+          source: keycloak-imports/application-realm.json
+          target: /application-realm.json
+          read_only: true
+      ports:
+        - "8443:8443"
+        - "8080:8080"
+        - "9990:9990"
+      command:
+        - "-Dkeycloak.migration.action=import"
+        - "-Dkeycloak.migration.provider=singleFile"
+        - "-Dkeycloak.migration.strategy=OVERWRITE_EXISTING"
+        - "-Dkeycloak.migration.file=/application-realm.json"
+      environment:
+        DB_VENDOR: mariadb
+        DB_ADDR: mariadb
+        DB_DATABASE: keycloak
+        DB_USER: keycloak
+        DB_PASSWORD: password
+        KEYCLOAK_USER: admin
+        KEYCLOAK_PASSWORD: Pa55w0rd
+        JGROUPS_DISCOVERY_PROTOCOL: JDBC_PING
+      depends_on:
+        - mariadb

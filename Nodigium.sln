@@ -5,9 +5,16 @@ VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3412FDEE-F6BA-4F54-919D-A72B65C76DCB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Users", "src\Service.Users\Service.Users.csproj", "{D8EBAD45-6B55-4925-9FB4-1EE7C44B93B6}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Frontend", "src\Service.Frontend\Service.Frontend.csproj", "{E86C04AC-EBA9-4549-AB32-9DCE222628E4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Users", "src\Service.Users\Service.Users.csproj", "{FB0D14D5-ACE5-4A1C-B699-E389735CCD72}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{38DE30BB-4755-4A0F-B156-3961E7F2147C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "keycloak-imports", "keycloak-imports", "{0E2E3DF9-2657-4187-B2FE-77F321C96161}"
+	ProjectSection(SolutionItems) = preProject
+		keycloak-imports\application-realm.json = keycloak-imports\application-realm.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,21 +22,25 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D8EBAD45-6B55-4925-9FB4-1EE7C44B93B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D8EBAD45-6B55-4925-9FB4-1EE7C44B93B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D8EBAD45-6B55-4925-9FB4-1EE7C44B93B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D8EBAD45-6B55-4925-9FB4-1EE7C44B93B6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E86C04AC-EBA9-4549-AB32-9DCE222628E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E86C04AC-EBA9-4549-AB32-9DCE222628E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E86C04AC-EBA9-4549-AB32-9DCE222628E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E86C04AC-EBA9-4549-AB32-9DCE222628E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB0D14D5-ACE5-4A1C-B699-E389735CCD72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB0D14D5-ACE5-4A1C-B699-E389735CCD72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB0D14D5-ACE5-4A1C-B699-E389735CCD72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB0D14D5-ACE5-4A1C-B699-E389735CCD72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38DE30BB-4755-4A0F-B156-3961E7F2147C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38DE30BB-4755-4A0F-B156-3961E7F2147C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38DE30BB-4755-4A0F-B156-3961E7F2147C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38DE30BB-4755-4A0F-B156-3961E7F2147C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{D8EBAD45-6B55-4925-9FB4-1EE7C44B93B6} = {3412FDEE-F6BA-4F54-919D-A72B65C76DCB}
 		{E86C04AC-EBA9-4549-AB32-9DCE222628E4} = {3412FDEE-F6BA-4F54-919D-A72B65C76DCB}
+		{FB0D14D5-ACE5-4A1C-B699-E389735CCD72} = {3412FDEE-F6BA-4F54-919D-A72B65C76DCB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FE0A1D8B-C5F4-424A-AA30-CC8E5502D7EF}
