@@ -55,6 +55,8 @@ jobs:
             --tag ${{ steps.prepare.outputs.docker_image }}:latest \
             --output type=image,push=true
   deploy:
+    env:
+      DOCKER_IMAGE: sebastart/nodigium-frontend
     name: Deploy
     needs: [ build ]
     runs-on: ubuntu-latest
@@ -76,4 +78,4 @@ jobs:
             kubernetes/deployment.yaml
             kubernetes/service.yaml
           images: |
-            hub.docker.com/${{ steps.prepare.outputs.docker_image }}:latest
+            $DOCKER_IMAGE:latest
