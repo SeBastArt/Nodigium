@@ -54,3 +54,27 @@ jobs:
             --tag ${{ steps.prepare.outputs.docker_image }}:${{ steps.prepare.outputs.version }} \
             --tag ${{ steps.prepare.outputs.docker_image }}:latest \
             --output type=image,push=true
+  deploy:
+    name: Deploy
+    needs: [ build ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set the Kubernetes context
+        uses: azure/k8s-set-context@v2
+        with:
+          method: service-account
+          k8s-url: ${{ secrets.KUBERNETES_DOMAIN }}
+          k8s-secret: ${{ secrets.KUBERNETES_SECRET }
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Deploy to the Kubernetes cluster
+        uses: azure/k8s-deploy@v1
+        with:
+          namespace: default
+          manifests: |
+            kubernetes/deployment.yaml
+            kubernetes/ingress.yaml
+            kubernetes/service.yaml
+          images: |
+            hub.docker.com/${{ steps.prepare.outputs.docker_image }}:latest
