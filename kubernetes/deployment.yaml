@@ -16,6 +16,8 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: nodigium-frontend:latest
+          image: sebastart/nodigium-frontend:latest
           ports:
             - containerPort: 8080
+      imagePullSecrets:
+        - name: docker-container-registry
