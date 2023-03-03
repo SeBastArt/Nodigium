@@ -16,6 +16,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "keycloak-imports", "keycloa
 		keycloak-imports\application-realm.json = keycloak-imports\application-realm.json
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "kubernetes", "kubernetes", "{35BEF823-64C5-4B3D-9255-E9BB62345436}"
+	ProjectSection(SolutionItems) = preProject
+		kubernetes\deployment.yaml = kubernetes\deployment.yaml
+		kubernetes\service.yaml = kubernetes\service.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
